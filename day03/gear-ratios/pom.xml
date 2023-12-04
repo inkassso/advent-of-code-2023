@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.inkassso.aoc2023</groupId>
-    <artifactId>day03.pt1.gear-ratios</artifactId>
+    <artifactId>day03.gear-ratios</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>

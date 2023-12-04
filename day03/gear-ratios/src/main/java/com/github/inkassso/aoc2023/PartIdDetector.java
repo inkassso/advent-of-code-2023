@@ -38,21 +38,22 @@ public class PartIdDetector {
         List<Field> fieldsToCheck = new LinkedList<>();
 
         if (row > 0) {
-            for (int j = (col > 0 ? col - 1 : 0); j < fields[row-1].length && j <= col + 1; j++) {
+            for (int j = (col > 0 ? col - 1 : 0); j < fields[row - 1].length && j <= col + 1; j++) {
                 fieldsToCheck.add(fields[row - 1][j]);
             }
         }
         if (col > 0) {
-            fieldsToCheck.add(fields[row][col-1]);
+            fieldsToCheck.add(fields[row][col - 1]);
         }
         if (col < fields[row].length - 1) {
-            fieldsToCheck.add(fields[row][col+1]);
+            fieldsToCheck.add(fields[row][col + 1]);
         }
         if (row < fields.length - 1) {
-            for (int j = (col > 0 ? col - 1 : 0); j < fields[row+1].length && j <= col + 1; j++) {
+            for (int j = (col > 0 ? col - 1 : 0); j < fields[row + 1].length && j <= col + 1; j++) {
                 fieldsToCheck.add(fields[row + 1][j]);
             }
         }
+
 
         for (Field fieldToCheck : fieldsToCheck) {
             if (fieldToCheck instanceof SymbolField symbolField) {
