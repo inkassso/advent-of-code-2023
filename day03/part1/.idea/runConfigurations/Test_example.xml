@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Test example" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.github.inkassso.aoc2023.Main" />
+    <module name="day03.pt1.gear-ratios" />
+    <option name="PROGRAM_PARAMETERS" value="input.txt" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="com.github.inkassso.aoc2023.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
