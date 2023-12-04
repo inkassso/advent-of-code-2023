@@ -63,7 +63,7 @@ public class ScratchCardParser {
         Set<Integer> winningNumbers = parseNumberList(matcher.group("winning"));
         Set<Integer> scratchedNumbers = parseNumberList(matcher.group("scratched"));
 
-        log.trace("Parsed scratchcard: id={}, winning={}, scratched={}", cardId, winningNumbers, scratchedNumbers);
+        log.trace("Parsed scratchcard: cardId={}, winning={}, scratched={}", cardId, winningNumbers, scratchedNumbers);
         return new ScratchCard(cardId, winningNumbers, scratchedNumbers);
     }
 

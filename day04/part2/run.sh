@@ -11,4 +11,5 @@ pushd "$mvn_proj"
 mvn compile assembly:single
 popd
 
-java -Dlog.level.root=INFO -jar "$mvn_proj/target/day04.scratchcards-1.0-SNAPSHOT-jar-with-dependencies.jar" eval-scores "$1"
+java -Dlog.level.root=INFO -jar "$mvn_proj/target/day04.scratchcards-1.0-SNAPSHOT-jar-with-dependencies.jar" count-cards "$1"
+
