@@ -12,8 +12,18 @@ import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
-public class PartIdDetector {
+public class PartIdDetector implements Detector {
     private final Field[][] fields;
+
+    @Override
+    public void detect() {
+        List<Integer> parts = detectParts();
+
+        long sum = parts.stream()
+                .mapToLong(id -> id)
+                .sum();
+        log.info("Sum of Part IDs: {}", sum);
+    }
 
     public List<Integer> detectParts() {
         log.debug("Detecting parts among fields");
@@ -28,7 +38,7 @@ public class PartIdDetector {
             }
         }
 
-        log.debug("Detected {} parts among fields", parts.size());
+        log.debug("Detected {} parts among fields: {}", parts.size(), parts);
         return parts;
     }
 

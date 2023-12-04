@@ -7,29 +7,36 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
+import java.util.function.Function;
 
 @Slf4j
 public class Main {
+    private static final String DETECT_PART_IDS = "detect-part-ids";
+    private static final String DETECT_GEARS = "detect-gears";
+
     public static void main(String[] args) throws IOException {
-        if (args.length != 1) {
-            throw new IllegalArgumentException("Expected 1 argument, got " + args.length);
+        if (args.length != 2) {
+            throw new IllegalArgumentException("Expected 2 argument, got " + args.length);
         }
 
-        Field[][] fields;
-        try (FileInputStream fileInputStream = new FileInputStream(args[0])) {
+        Function<Field[][], Detector> detectorFactory = switch (args[0]) {
+            case DETECT_PART_IDS -> PartIdDetector::new;
+            case DETECT_GEARS -> GearDetector::new;
+            default -> throw new IllegalArgumentException("Invalid command: expected=[%s, %S], actual=%s".formatted(DETECT_PART_IDS, DETECT_GEARS, args[0]));
+        };
+
+        Field[][] fields = parseFields(args[1]);
+
+        Detector detector = detectorFactory.apply(fields);
+        detector.detect();
+    }
+
+    private static Field[][] parseFields(String inputFile) throws IOException {
+        try (FileInputStream fileInputStream = new FileInputStream(inputFile)) {
             var parser = new SchemaParser(fileInputStream);
-            fields = parser.parse();
+            return parser.parse();
         } catch (ParseException e) {
             throw new IOException("Invalid input", e);
         }
-
-        var detector = new PartIdDetector(fields);
-        List<Integer> parts = detector.detectParts();
-        log.debug("Detected parts: {}", parts);
-
-        long sum = parts.stream()
-                .mapToLong(id -> id)
-                .sum();
-        System.out.println("Sum of Part IDs: " + sum);
     }
 }

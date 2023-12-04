@@ -1,8 +1,8 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Test example" type="Application" factoryName="Application">
+  <configuration default="false" name="Run part 1 with input" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="com.github.inkassso.aoc2023.Main" />
-    <module name="day03.pt1.gear-ratios" />
-    <option name="PROGRAM_PARAMETERS" value="input.txt" />
+    <module name="day03.gear-ratios" />
+    <option name="PROGRAM_PARAMETERS" value="detect-part-ids ../input.txt" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="com.github.inkassso.aoc2023.*" />
