@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Test part 1 example" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.github.inkassso.aoc2023.seeds.Main" />
+    <module name="day05.seeds" />
+    <option name="PROGRAM_PARAMETERS" value="seed-list ../example.txt" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="com.github.inkasso.aoc2023.seeds.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

@@ -19,7 +19,7 @@ public class Main {
         Function<List<ScratchCard>, Evaluator> evaluatorFactory = switch (args[0]) {
             case EVALUATE_SCORES -> ScoreEvaluator::new;
             case COUNT_CARDS -> CountEvaluator::new;
-            default -> throw new IllegalArgumentException("Invalid command: expected=[%s, %S], actual=%s".formatted(EVALUATE_SCORES, COUNT_CARDS, args[0]));
+            default -> throw new IllegalArgumentException("Invalid command: expected=[%s, %s], actual=%s".formatted(EVALUATE_SCORES, COUNT_CARDS, args[0]));
         };
 
         List<ScratchCard> scratchCards = parseScratchCards(args[1]);
