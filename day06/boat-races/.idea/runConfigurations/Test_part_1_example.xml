@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Test part 1 example" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.github.inkassso.aoc2023.boatraces.Main" />
+    <module name="day06.boat-races" />
+    <option name="PROGRAM_PARAMETERS" value="beat-records ../example.txt" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="com.github.inkassso.aoc2023.boatraces.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
