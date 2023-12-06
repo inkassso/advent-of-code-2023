@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -14,7 +13,7 @@ public class SeedListLowestLocationSearch implements LowestLocationSearch {
     private static final String SEED_CATEGORY = "seed";
     private static final String LOCATION_CATEGORY = "location";
 
-    private final Set<Long> initialSeedNumbers;
+    private final List<Long> initialSeedNumbers;
     private final Map<String, List<CategoryMap>> categoryMapsBySource;
 
     public SeedListLowestLocationSearch(Almanac almanac) {
@@ -26,7 +25,7 @@ public class SeedListLowestLocationSearch implements LowestLocationSearch {
     @Override
     public void evaluate() {
         log.debug("Evaluating category maps to reach location category with initial seed numbers: {}", initialSeedNumbers);
-        Set<Long> locationNumbers = dfsLocations(SEED_CATEGORY, initialSeedNumbers);
+        List<Long> locationNumbers = dfsLocations(SEED_CATEGORY, initialSeedNumbers);
         if (locationNumbers == null) {
             log.error("Location category could not be reached using category maps");
             return;
@@ -34,7 +33,7 @@ public class SeedListLowestLocationSearch implements LowestLocationSearch {
         log.info("Lowest location number: {}", locationNumbers.stream().sorted().findFirst().map(Object::toString).orElse("<none>"));
     }
 
-    private Set<Long> dfsLocations(String sourceCategory, Set<Long> numbers) {
+    private List<Long> dfsLocations(String sourceCategory, List<Long> numbers) {
         if (sourceCategory.equals(LOCATION_CATEGORY)) {
             log.debug("Reached location category with numbers: {}", numbers);
             return numbers;
@@ -48,9 +47,9 @@ public class SeedListLowestLocationSearch implements LowestLocationSearch {
         for (CategoryMap destinationCategoryMap : categoryMaps) {
             log.trace("Mapping numbers between categories: source={}, destination={}", sourceCategory, destinationCategoryMap.destinationCategory());
 
-            Set<Long> mappedNumbers = numbers.stream().map(destinationCategoryMap::mapItem).collect(Collectors.toSet());
+            List<Long> mappedNumbers = numbers.stream().map(destinationCategoryMap::mapItem).toList();
 
-            Set<Long> locationNumbers = dfsLocations(destinationCategoryMap.destinationCategory(), mappedNumbers);
+            List<Long> locationNumbers = dfsLocations(destinationCategoryMap.destinationCategory(), mappedNumbers);
             if (locationNumbers != null) {
                 return locationNumbers;
             }

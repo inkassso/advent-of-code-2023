@@ -9,6 +9,7 @@ import java.util.function.Function;
 
 public class Main {
     private static final String SEED_LIST = "seed-list";
+    private static final String SEED_RANGES = "seed-ranges";
 
     public static void main(String[] args) throws IOException {
         if (args.length != 2) {
@@ -17,7 +18,8 @@ public class Main {
 
         Function<Almanac, LowestLocationSearch> evaluatorFactory = switch (args[0]) {
             case SEED_LIST -> SeedListLowestLocationSearch::new;
-            default -> throw new IllegalArgumentException("Invalid command: expected=[%s], actual=%s".formatted(SEED_LIST, args[0]));
+            case SEED_RANGES -> SeedRangesLowestLocationSearch::new;
+            default -> throw new IllegalArgumentException("Invalid command: expected=[%s, %s], actual=%s".formatted(SEED_LIST, SEED_RANGES, args[0]));
         };
 
         Almanac almanac = parseAlmanac(args[1]);
