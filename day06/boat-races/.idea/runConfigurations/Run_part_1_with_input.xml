@@ -2,7 +2,7 @@
   <configuration default="false" name="Run part 1 with input" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="com.github.inkassso.aoc2023.boatraces.Main" />
     <module name="day06.boat-races" />
-    <option name="PROGRAM_PARAMETERS" value="beat-records ../input.txt" />
+    <option name="PROGRAM_PARAMETERS" value="multiple ../input.txt" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="com.github.inkassso.aoc2023.boatraces.*" />

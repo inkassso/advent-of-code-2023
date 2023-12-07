@@ -9,10 +9,9 @@ import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
-public class RecordBeatingRaceStatsEvaluator implements RaceStatsEvaluator {
+public class RecordBeatingRaceStatsEvaluator {
     private final List<RaceStat> raceStats;
 
-    @Override
     public void evaluate() {
         long product = raceStats.stream()
                 .map(this::evaluateRaceStat)
