@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Run part 1 with input" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.github.inkassso.aoc2023.camelcards.Main" />
+    <module name="day07.camel-cards" />
+    <option name="PROGRAM_PARAMETERS" value="total-winnings ../input.txt" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="com.github.inkassso.aoc2023.camelcards.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
