@@ -9,10 +9,9 @@ import java.util.stream.IntStream;
 
 @Slf4j
 @RequiredArgsConstructor
-public class TotalWinningsHandsEvaluator implements HandsEvaluator {
+public class TotalWinningsHandsEvaluator {
     private final List<Turn> turns;
 
-    @Override
     public void evaluate() {
         List<Turn> turnsByRank = turns.stream()
                 .sorted()

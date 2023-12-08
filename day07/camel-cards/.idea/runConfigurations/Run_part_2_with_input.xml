@@ -1,8 +1,8 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Test part 1 example" type="Application" factoryName="Application">
+  <configuration default="false" name="Run part 2 with input" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="com.github.inkassso.aoc2023.camelcards.Main" />
     <module name="day07.camel-cards" />
-    <option name="PROGRAM_PARAMETERS" value="with-jack ../example.txt" />
+    <option name="PROGRAM_PARAMETERS" value="with-joker ../input.txt" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="com.github.inkassso.aoc2023.camelcards.*" />

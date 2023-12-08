@@ -2,7 +2,7 @@
   <configuration default="false" name="Run part 1 with input" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="com.github.inkassso.aoc2023.camelcards.Main" />
     <module name="day07.camel-cards" />
-    <option name="PROGRAM_PARAMETERS" value="total-winnings ../input.txt" />
+    <option name="PROGRAM_PARAMETERS" value="with-jack ../input.txt" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="com.github.inkassso.aoc2023.camelcards.*" />

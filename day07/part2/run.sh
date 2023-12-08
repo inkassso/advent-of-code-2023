@@ -11,4 +11,4 @@ pushd "$mvn_proj"
 mvn compile assembly:single
 popd
 
-java -Dlog.level.root=INFO -jar "$mvn_proj/target/day07.camel-cards-1.0-SNAPSHOT-jar-with-dependencies.jar" with-jack "$1"
+java -Dlog.level.root=INFO -jar "$mvn_proj/target/day07.camel-cards-1.0-SNAPSHOT-jar-with-dependencies.jar" with-joker "$1"

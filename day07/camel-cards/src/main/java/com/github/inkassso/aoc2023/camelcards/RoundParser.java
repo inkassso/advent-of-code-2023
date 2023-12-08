@@ -12,6 +12,7 @@ import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -21,6 +22,7 @@ public class RoundParser {
     private static final Pattern TURN_PATTERN = Pattern.compile("^(?<hand>[2-9TJQKA]{5})\\s+(?<bid>\\d+)$");
 
     private final InputStream inputStream;
+    private final Function<Character, Card> cardFactory;
     private int lineNr = 0;
 
     public List<Turn> parse() throws IOException, ParseException {
@@ -58,7 +60,8 @@ public class RoundParser {
             throw new ParseException("Unexpected input, expected hand and bid", lineNr);
         }
         List<Card> hand = matcher.group("hand").chars()
-                .mapToObj(charIndex -> Card.findBySymbol((char) charIndex))
+                .mapToObj(i -> (char) i)
+                .map(cardFactory)
                 .toList();
         long bid = Long.parseLong(matcher.group("bid"));
         return new Turn(hand, bid);

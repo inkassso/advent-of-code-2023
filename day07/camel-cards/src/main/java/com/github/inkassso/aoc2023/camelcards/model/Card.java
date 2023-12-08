@@ -11,6 +11,7 @@ import java.util.Optional;
 @Getter
 @RequiredArgsConstructor
 public enum Card {
+    JOKER('J'),
     TWO('2'),
     THREE('3'),
     FOUR('4'),
@@ -24,19 +25,6 @@ public enum Card {
     QUEEN('Q'),
     KING('K'),
     ACE('A');
-
-    private static final Map<Character, Card> REVERSE_LOOKUP = new HashMap<>() {
-        {
-            for (Card card : Card.values()) {
-                put(card.symbol, card);
-            }
-        }
-    };
-
-    public static Card findBySymbol(char symbol) {
-        return Optional.ofNullable(REVERSE_LOOKUP.get(symbol))
-                .orElseThrow(() -> new NoSuchElementException("Card not found for symbol: " + symbol));
-    }
 
     private final char symbol;
 
