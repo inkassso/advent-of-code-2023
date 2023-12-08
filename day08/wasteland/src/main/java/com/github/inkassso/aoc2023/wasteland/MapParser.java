@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -78,8 +79,17 @@ public class MapParser {
             Node node = nodes.computeIfAbsent(label, Node::new);
             Node leftChild = nodes.computeIfAbsent(left, Node::new);
             Node rightChild = nodes.computeIfAbsent(right, Node::new);
-            node.left(leftChild);
-            node.right(rightChild);
+            node.setChildren(leftChild, rightChild);
+
+            log.trace("Parsed node traversal: {}", node);
+        }
+
+        List<Node> onlyDeclared = nodes.values().stream()
+                .filter(node -> node.left() == null || node.right() == null)
+                .toList();
+        if (!onlyDeclared.isEmpty()) {
+            throw new ParseException("%s nodes were referenced but not defined: [%s]".formatted(
+                    onlyDeclared.size(), onlyDeclared.stream().map(Node::label).collect(Collectors.joining(", "))), lineNr);
         }
 
         return nodes;

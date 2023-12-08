@@ -8,7 +8,8 @@ import java.text.ParseException;
 import java.util.function.Function;
 
 public class Main {
-    private static final String COUNT_INSTRUCTIONS = "count-instructions";
+    private static final String SINGLE_PATH = "single-path";
+    private static final String CONCURRENT_PATHS = "concurrent-paths";
 
     public static void main(String[] args) throws IOException {
         if (args.length != 2) {
@@ -16,9 +17,10 @@ public class Main {
         }
 
         Function<WastelandMap, PathFinder> pathFinderFactory = switch (args[0]) {
-            case COUNT_INSTRUCTIONS -> InstructionCountingPathFinder::new;
+            case SINGLE_PATH -> SinglePathPathFinder::new;
+            case CONCURRENT_PATHS -> ConcurrentPathsPathFinder::new;
             default ->
-                    throw new IllegalArgumentException("Invalid command: expected=[%s], actual=%s".formatted(COUNT_INSTRUCTIONS, args[0]));
+                    throw new IllegalArgumentException("Invalid command: expected=[%s], actual=%s".formatted(SINGLE_PATH, args[0]));
         };
 
         WastelandMap map = parseRaceStats(args[1]);

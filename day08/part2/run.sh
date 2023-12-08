@@ -11,4 +11,4 @@ pushd "$mvn_proj"
 mvn compile assembly:single
 popd
 
-java -Dlog.level.root=INFO -jar "$mvn_proj/target/day08.wasteland-1.0-SNAPSHOT-jar-with-dependencies.jar" single-path "$1"
+java -Dlog.level.root=INFO -jar "$mvn_proj/target/day08.wasteland-1.0-SNAPSHOT-jar-with-dependencies.jar" concurrent-paths "$1"

@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RequiredArgsConstructor
-public class InstructionCountingPathFinder implements PathFinder {
+public class SinglePathPathFinder implements PathFinder {
     private static final String START = "AAA";
     private static final String END = "ZZZ";
 
@@ -28,12 +28,7 @@ public class InstructionCountingPathFinder implements PathFinder {
             if (!iterator.hasNext()) {
                 iterator = map.instructions().iterator();
             }
-            Turn turn = iterator.next();
-            current = switch (turn) {
-                case LEFT -> current.left();
-                case RIGHT -> current.right();
-                default -> throw new IllegalStateException("Invalid turn: " + turn);
-            };
+            current = iterator.next().childSelector().apply(current);
             instructions++;
         }
 
