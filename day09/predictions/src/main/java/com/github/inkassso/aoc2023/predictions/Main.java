@@ -8,6 +8,7 @@ import java.util.function.Function;
 
 public class Main {
     private static final String PREDICT_NEXT = "predict-next";
+    private static final String ESTIMATE_PREVIOUS = "estimate-previous";
 
     public static void main(String[] args) throws IOException {
         if (args.length != 2) {
@@ -16,8 +17,9 @@ public class Main {
 
         Function<List<List<Long>>, MetricEvaluator> evaluatorFactory = switch (args[0]) {
             case PREDICT_NEXT -> NextValuePredictingMetricEvaluator::new;
+            case ESTIMATE_PREVIOUS -> PreviousValueEstimatingMetricEvaluator::new;
             default ->
-                    throw new IllegalArgumentException("Invalid command: expected=[%s], actual=%s".formatted(PREDICT, args[0]));
+                    throw new IllegalArgumentException("Invalid command: expected=[%s, %s], actual=%s".formatted(PREDICT_NEXT, ESTIMATE_PREVIOUS, args[0]));
         };
 
         List<List<Long>> map = parseRaceStats(args[1]);
