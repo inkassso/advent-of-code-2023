@@ -20,7 +20,7 @@ public class Main {
             case SINGLE_PATH -> SinglePathPathFinder::new;
             case CONCURRENT_PATHS -> ConcurrentPathsPathFinder::new;
             default ->
-                    throw new IllegalArgumentException("Invalid command: expected=[%s], actual=%s".formatted(SINGLE_PATH, args[0]));
+                    throw new IllegalArgumentException("Invalid command: expected=[%s, %s], actual=%s".formatted(SINGLE_PATH, CONCURRENT_PATHS, args[0]));
         };
 
         WastelandMap map = parseRaceStats(args[1]);
